@@ -1,7 +1,7 @@
 from PyQt6.QtWidgets import QApplication
 
 from Logic import *
-from AutoClicker import *
+
 
 def main():
     application = QApplication([])
