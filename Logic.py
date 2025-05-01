@@ -15,8 +15,8 @@ class Logic(QMainWindow, Ui_autoclicker):
 
         self.running = False
         self.delay = .001
-        self.start_hotkey = 'a'
-        self.stop_hotkey = 'b'
+        self.start_hotkey = "a"
+        self.stop_hotkey = "b"
 
         self.start_pushButton.clicked.connect(self.start_clicking)
         self.end_pushButton.clicked.connect(self.stop_clicking)
