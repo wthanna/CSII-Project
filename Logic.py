@@ -8,13 +8,17 @@ import keyboard
 
 mouse = Controller()
 
+
 class Logic(QMainWindow, Ui_autoclicker):
     def __init__(self):
         super().__init__()
         self.setupUi(self)
 
+        self.begin = time.time()
         self.running = False
-        self.delay = .001
+        self.delay_lineEdit.setText("1")
+        self.startClick_lineEdit.setText("a")
+        self.endClick_lineEdit.setText("b")
         self.start_hotkey = "a"
         self.stop_hotkey = "b"
 
@@ -45,17 +49,35 @@ class Logic(QMainWindow, Ui_autoclicker):
 
     def start_clicking(self):
         try:
-            self.delay = float(self.delay_lineEdit.text())
-            self.start_hotkey = self.startClick_lineEdit.text().lower()
-            self.stop_hotkey = self.endClick_lineEdit.text().lower()
+            delay_text = self.delay_lineEdit.text().strip()
+            self.delay = float(delay_text) if delay_text else 1.0
+            start_key = self.startClick_lineEdit.text().lower()
+            stop_key = self.endClick_lineEdit.text().lower()
+
+            if len(start_key) != 1 or len(stop_key) != 1 or not start_key.strip() or not stop_key.strip():
+                self.error_message_lable.setText("Start/Stop keys must be 1 non-space character only.")
+                return
+
+            if self.delay <= 0:
+                self.error_message_lable.setText("Delay must be grater than 0.")
+                return
+
+            if start_key == stop_key:
+                self.error_message_lable.setText("Start and Stop keys must be different.")
+            self.start_hotkey = start_key
+            self.stop_hotkey = stop_key
+
         except ValueError:
-            self.error_message_lable.setText("Error")
+            self.error_message_lable.setText("Invalid delay. Must be a number.")
             return
 
+        self.begin = time.time()
         self.running = True
         self.start_pushButton.setEnabled(False)
         self.end_pushButton.setEnabled(True)
         self.status_label.setText("running...")
+        self.runTime_label.setText(f"running...")
+        self.error_message_lable.setText("")
         threading.Thread(target=self.click_loop, daemon=True).start()
 
     def stop_clicking(self):
@@ -63,11 +85,14 @@ class Logic(QMainWindow, Ui_autoclicker):
         self.start_pushButton.setEnabled(True)
         self.end_pushButton.setEnabled(False)
         self.status_label.setText("stopped")
+        time.sleep(1)
+        end = time.time()
+        self.runTime_label.setText(f"{(end - self.begin):.2f}")
 
-    #def clear_input(self):
-    #    self.lineEdit_food.clear()
-    #    self.lineEdit_drink.clear()
-    #    self.lineEdit_desert.clear()
-    #    self.radioButton.setChecked(True)
-    #    self.label_summary.setText("")
-    #    self.label_summarybox.setText("")
+        try:
+            with open("clicker_runtime_log.txt", "a") as log_file:
+                log_file.write(f"Session duration: {(end - self.begin):.2f} seconds\n")
+        except Exception as e:
+            self.error_message_lable.setText(f"Log Error: {e}")
+
+

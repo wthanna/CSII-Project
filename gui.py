@@ -54,6 +54,12 @@ class Ui_autoclicker(object):
         self.error_message_lable.setGeometry(QtCore.QRect(10, 10, 281, 20))
         self.error_message_lable.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
         self.error_message_lable.setObjectName("error_message_lable")
+        self.runTime_label = QtWidgets.QLabel(parent=self.centralwidget)
+        self.runTime_label.setGeometry(QtCore.QRect(140, 190, 101, 16))
+        self.runTime_label.setObjectName("runTime_label")
+        self.program_runTime_label = QtWidgets.QLabel(parent=self.centralwidget)
+        self.program_runTime_label.setGeometry(QtCore.QRect(40, 190, 91, 16))
+        self.program_runTime_label.setObjectName("program_runTime_label")
         autoclicker.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(parent=autoclicker)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 300, 18))
@@ -77,6 +83,8 @@ class Ui_autoclicker(object):
         self.start_pushButton.setText(_translate("autoclicker", "Start"))
         self.end_pushButton.setText(_translate("autoclicker", "End"))
         self.error_message_lable.setText(_translate("autoclicker", "Error mesage"))
+        self.runTime_label.setText(_translate("autoclicker", "Run time"))
+        self.program_runTime_label.setText(_translate("autoclicker", "Program run time:"))
 
 
 if __name__ == "__main__":
