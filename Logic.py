@@ -19,6 +19,8 @@ class Logic(QMainWindow, Ui_autoclicker):
         self.delay_lineEdit.setText("1")
         self.startClick_lineEdit.setText("a")
         self.endClick_lineEdit.setText("b")
+        self.startClick_lineEdit.setMaxLength(1)
+        self.endClick_lineEdit.setMaxLength(1)
         self.start_hotkey = "a"
         self.stop_hotkey = "b"
 
