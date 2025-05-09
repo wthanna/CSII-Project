@@ -4,11 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2878e849-7c74-4d09-8cc3-e91c7be8b446" name="Changes" comment="updated error catching and write to txt">
+    <list default="true" id="2878e849-7c74-4d09-8cc3-e91c7be8b446" name="Changes" comment="added line edit max char">
       <change afterPath="$PROJECT_DIR$/clicker_runtime_log.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Logic.py" beforeDir="false" afterPath="$PROJECT_DIR$/Logic.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gui.py" beforeDir="false" afterPath="$PROJECT_DIR$/gui.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -159,7 +157,15 @@
       <option name="project" value="LOCAL" />
       <updated>1746372897303</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="added line edit max char">
+      <option name="closed" value="true" />
+      <created>1746492606402</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1746492606402</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -169,6 +175,7 @@
     <MESSAGE value="GUI fixed and autoclicker works" />
     <MESSAGE value="final commit" />
     <MESSAGE value="updated error catching and write to txt" />
-    <option name="LAST_COMMIT_MESSAGE" value="updated error catching and write to txt" />
+    <MESSAGE value="added line edit max char" />
+    <option name="LAST_COMMIT_MESSAGE" value="added line edit max char" />
   </component>
 </project>
