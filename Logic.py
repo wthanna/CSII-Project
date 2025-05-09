@@ -55,10 +55,14 @@ class Logic(QMainWindow, Ui_autoclicker):
             self.delay = float(delay_text) if delay_text else 1.0
             start_key = self.startClick_lineEdit.text().lower()
             stop_key = self.endClick_lineEdit.text().lower()
+            self.startClick_lineEdit.setEnabled(False)
+            self.endClick_lineEdit.setEnabled(False)
+            self.delay_lineEdit.setEnabled(False)
 
-            if len(start_key) != 1 or len(stop_key) != 1 or not start_key.strip() or not stop_key.strip():
-                self.error_message_lable.setText("Start/Stop keys must be 1 non-space character only.")
-                return
+
+            #if len(start_key) != 1 or len(stop_key) != 1 or not start_key.strip() or not stop_key.strip():
+            #    self.error_message_lable.setText("Start/Stop keys must be 1 non-space character only.")
+            #    return
 
             if self.delay <= 0:
                 self.error_message_lable.setText("Delay must be grater than 0.")
@@ -86,6 +90,9 @@ class Logic(QMainWindow, Ui_autoclicker):
         self.running = False
         self.start_pushButton.setEnabled(True)
         self.end_pushButton.setEnabled(False)
+        self.startClick_lineEdit.setEnabled(True)
+        self.endClick_lineEdit.setEnabled(True)
+        self.delay_lineEdit.setEnabled(True)
         self.status_label.setText("stopped")
         time.sleep(1)
         end = time.time()
